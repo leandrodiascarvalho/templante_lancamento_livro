@@ -1,0 +1,240 @@
+/* CSS Modernizado com Variáveis */
+:root {
+  --cor-primaria: #49b970;
+  --cor-primaria-hover: #3a9a5e;
+  --cor-fundo: #f8f9fa;
+  --cor-texto: #333;
+  --cor-titulo: #111;
+  --cor-borda: #e0e0e0;
+  --cor-fundo-card: #ffffff;
+  --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --fonte-principal: "Montserrat", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.7;
+}
+
+main {
+  width: 100%;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+section:not(:first-child) {
+  border-top: 1px solid var(--cor-borda);
+}
+
+/* Estilo para a imagem de capa principal */
+header #capa-principal {
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+  background-color: #eee;
+}
+
+h1,
+h2 {
+  color: var(--cor-titulo);
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.1rem;
+  color: var(--cor-titulo);
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+span,
+.destaque {
+  font-weight: 700;
+  color: var(--cor-primaria);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.img-sombra {
+  box-shadow: var(--sombra-card);
+}
+
+/* Imagem do autor menor */
+figure img[alt*="Pedro Bandeira"] {
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 14px 35px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--cor-primaria-hover);
+  transform: translateY(-2px);
+}
+
+.books-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.book-item {
+  background-color: var(--cor-fundo-card);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--sombra-card);
+  width: 200px;
+  transition: transform 0.3s ease, border 0.4s linear;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.book-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 0;
+  z-index: -1;
+  border: 3px solid var(--cor-primaria);
+  opacity: 0;
+  transition: opacity 0.4s, border-color 0.4s;
+}
+
+.book-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--cor-primaria);
+}
+
+.book-item:hover::before {
+  opacity: 1;
+  border-color: #3a9a5e;
+  animation: borderPulse 1.2s infinite alternate;
+}
+
+@keyframes borderPulse {
+  0% {
+    border-color: var(--cor-primaria);
+  }
+  100% {
+    border-color: var(--cor-primaria-hover);
+  }
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 40px 10px;
+  }
+  .books-grid {
+    gap: 15px;
+  }
+  .book-item {
+    width: 160px;
+    padding: 15px;
+  }
+  .book-item img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  .container {
+    padding: 30px 5px;
+  }
+  .books-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .book-item {
+    width: 90%;
+    max-width: 320px;
+  }
+  header #capa-principal {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  .book-item {
+    padding: 10px;
+  }
+  .book-item img {
+    height: 120px;
+  }
+}
